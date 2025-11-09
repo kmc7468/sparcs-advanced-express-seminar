@@ -5,9 +5,9 @@
 </script>
 
 <GalleryPage
-  title="둘러보기"
-  description="모든 사용자가 전체공개로 공유한 사진이 최신순으로 보여집니다."
+  title={data.isOwner ? `내 갤러리` : `@${data.username} 님의 갤러리`}
+  description={data.subtitle}
   photos={data.photos}
-  emptyMessage="아직 공개된 사진이 없습니다."
+  emptyMessage={data.emptyMessage}
   errorMessage={data.errorMessage}
 />

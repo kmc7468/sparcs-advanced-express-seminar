@@ -8,6 +8,8 @@ Code by [Minchan Kim](https://github.com/kmc7468) (Static @ SPARCS)
 
 - Node.js v22.18.0 or higher
   - Watch mode and type stripping **are required.**
+- MySQL 8.4 or a compatible instance
+- S3-compatible storage
 
 ## See also
 

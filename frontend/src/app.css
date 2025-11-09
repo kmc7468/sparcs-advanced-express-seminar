@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family:
+      "Pretendard Variable",
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      "Helvetica Neue",
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
+      "Malgun Gothic",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      sans-serif;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+    margin: 0;
+    background-image:
+      radial-gradient(circle at top, rgba(56, 189, 248, 0.2), transparent 52%),
+      radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.16), transparent 46%),
+      radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.25), transparent 50%), #020617;
+  }
+
+  a {
+    @apply text-sky-300 underline-offset-4 transition hover:text-sky-100 hover:underline;
+  }
+
+  input:not([type="checkbox"]),
+  textarea,
+  select {
+    @apply w-full rounded-2xl border border-white/15 bg-slate-900/60 px-4 py-3 text-base text-slate-100 shadow-inner shadow-black/20 placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 focus:outline-none;
+  }
+
+  input[type="checkbox"] {
+    @apply h-5 w-5 rounded-md border-white/30 bg-slate-900/60 text-sky-400 focus:ring-2 focus:ring-sky-400/40;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  .btn-primary {
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-6 py-3 font-semibold text-slate-950 shadow-lg shadow-sky-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .text-muted {
+    @apply text-slate-300/80;
+  }
+}

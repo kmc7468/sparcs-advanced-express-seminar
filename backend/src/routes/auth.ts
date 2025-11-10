@@ -45,13 +45,12 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ message: "Invalid username" });
   }
 
-  const passwordMatches = await bcrypt.compare(password, user.passwordHash);
+  // [실습1] Authentication
+  // TODO: 아이디와 비밀번호가 올바른 경우 JWT를 발급한 후 쿠키로 전송합니다.
+  // HINT: 비밀번호가 일치하는지 확인하려면 await bcrypt.compare(password, <DB에 저장된 해시값>)를 사용하세요.
+  // 아래에 코드를 작성하세요.
 
-  if (!passwordMatches) {
-    return res.status(401).json({ message: "Invalid password" });
-  }
-
-  issueSession(res, { userId: user.id });
+  // 위에 코드를 작성하세요.
   return res.json({
     user: {
       id: user.id,

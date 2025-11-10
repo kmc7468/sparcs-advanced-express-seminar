@@ -19,16 +19,11 @@ export function attachUser(req: Request, res: Response, next: NextFunction) {
     return next();
   }
 
-  const session = decodeSession(token);
+  // [실습1] Authentication
+  // TODO: 토큰을 디코딩하여 사용자 정보를 얻은 후 req.user에 저장합니다.
+  // 아래에 코드를 작성하세요.
 
-  if (!session) {
-    clearSession(res);
-    return next();
-  }
-
-  req.user = {
-    id: session.userId,
-  };
+  // 위에 코드를 작성하세요.
 
   return next();
 }

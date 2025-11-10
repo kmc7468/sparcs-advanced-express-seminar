@@ -12,12 +12,16 @@ const presignUrlSchema = z.object({
   fileSize: z.int().nonnegative(),
 });
 
-const createPhotoSchema = z.object({
-  title: z.string().trim().min(1).max(120),
-  description: z.string().trim().max(500).default(""),
-  isPublic: z.boolean().default(true),
-  imageKey: z.string().min(1),
-});
+// [실습3] Zod
+// TODO: 사진 생성 요청을 처리하기 위한 스키마를 정의합니다.
+// 다음 조건을 만족해야 합니다:
+// - title: 1자 이상 120자 이하의 문자열
+// - description: 최대 500자의 문자열 (기본값: 빈 문자열)
+// - isPublic: 불리언 값 (기본값: true)
+// - imageKey: 1자 이상의 문자열
+// 아래에 코드를 작성하세요.
+
+// 위에 코드를 작성하세요.
 
 function toPhotoResponse(photo: {
   id: string;
@@ -92,28 +96,24 @@ router.post("/upload-url", requireAuth, async (req, res) => {
 });
 
 router.post("/", requireAuth, async (req, res) => {
-  const { title, description, isPublic, imageKey } = createPhotoSchema.parse(req.body);
+  // [실습3] Zod
+  // TODO: 사용자의 입력이 유효한지 검증합니다.
+  // 아래에 코드를 작성하세요.
+
+  // 위에 코드를 작성하세요.
+  // 코드를 작성한 후, 바로 아랫줄의 코드를 삭제하세요.
+  const { title, description, isPublic, imageKey } = req.body;
+  // 바로 윗줄의 코드를 삭제하세요.
 
   if (!imageKey.startsWith(`photos/${req.user!.id}/`)) {
     return res.status(400).json({ message: "Invalid image key" });
   }
 
-  const imageExists = await objectExists(imageKey);
+  // [실습2] AWS S3
+  // TODO: S3에 실제로 이미지가 존재하는지 확인한 후 DB에 이미지 정보를 저장합니다.
+  // 아래에 코드를 작성하세요.
 
-  if (!imageExists) {
-    return res.status(400).json({ message: "Image not found" });
-  }
-
-  const photo = await prisma.photo.create({
-    data: {
-      title,
-      description,
-      isPublic,
-      imageKey,
-      userId: req.user!.id,
-    },
-    include: { user: { select: { username: true } } },
-  });
+  // 위에 코드를 작성하세요.
 
   return res.status(201).json({ photo: toPhotoResponse(photo) });
 });
